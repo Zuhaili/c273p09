@@ -8,9 +8,13 @@ $(document).ready(function () {
                         cache: false,
                         dataType: "JSON",
                         success: function (response) {
-                            $(".studentid").html(response.student_id);
-                            $(".obeseTable").html(response.population);
-                            $(".obese").html(response.obese);
+                            var message = "<thead></th><th>Population</th><th>obese</th></tr></thead>";
+                            
+                             message += "<tbody><tr><td>" + response.population + "</td><td>"
+                                    + response.obese + "</td></tr></tbody>";
+                            
+
+                            $("#obeseTable").html(message);
                         },
                         error: function (obj, textStatus, errorThrown) {
                             console.log("Error " + textStatus + ": " + errorThrown);
@@ -18,3 +22,5 @@ $(document).ready(function () {
                     });
                 });
             });
+            
+  
