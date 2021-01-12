@@ -1,18 +1,23 @@
+
 <?php
-include('dbFunctions.php');
 
-$cat_id = $_GET['id'];
-$statistics = Array();
+include "dbFunctions.php";
 
-//SQL 
-$query = "SELECT * FROM statistics WHERE id = $cat_id";
-$result = mysqli_query($link,$query);
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    
+     $student = array();
+    $query = "SELECT * FROM statistics where id = $id";
+    $result = mysqli_query($link, $query);
 
-while($row = mysqli_fetch_assoc($result)){
-    $statistics[] = $row;
+    $row = mysqli_fetch_assoc($result);
+    if(!empty($row)) {
+        $statistics = $row;
+    }
+    mysqli_close($link);
+
+    echo json_encode($statistics);
 }
-
-echo json_encode($statistics);
 ?>
 
 
