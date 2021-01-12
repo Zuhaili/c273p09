@@ -3,12 +3,12 @@ $(document).ready(function () {
                     var countryID = $(this).val()
                     $.ajax({
                         type: "GET",
-                        url: "getCountryDetails.php",
+                        url: "https://c273p09.azurewebsites.net/getCountryDetails.php",
                         data: "id=" + countryID,
                         cache: false,
                         dataType: "JSON",
                         success: function (response) {
-                            var message = "";
+                            var message = "<thead></th><th>Population</th><th>obese</th></tr></thead>";
                             
                              message += "<tbody><tr><td>" + response.population + "</td><td>"
                                     + response.obese + "</td></tr></tbody>";
